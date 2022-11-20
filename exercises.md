@@ -76,10 +76,14 @@ Der `config`-Server läuft nun (auf `localhost:8000`). Er unterstützt die folge
 
 **Aufgabe 6**: Kopieren Sie die Datei `endpoint-[identifier].json` nach `new-endpoint.json`. Öffnen Sie nun `new-endpoint.json` in einem Texteditor. Ersetzen Sie alle Werte in dieser Datei durch diejenigen, die Sie vorher bei Aufgabe 3 als vierte Zeile ergänzt haben. Machen Sie nun mit `curl` eine `POST`-Anfrage ([siehe Einführung](README.md#post-anfragen)) an den `config`-Server. Dieser sollte den neuen Endpunkt nun in seine Datenbank (siehe `config.csv` im `meow`-Verzeichnis) aufgenommen haben. Dokumentieren Sie Ihren Befehl in der Datei `post-endpoint-[identifier].sh`. Fügen Sie diese Datei und `new-endpoint.json` diesem Git-Repository hinzu.
 
+**Aufgabe 7**: Erstellen Sie anschliessend einen Pull Request von _diesem_ Repository!
+
 ## Zusatzaufgabe: Ergänzung des Config-Servers um `DELETE`-Endpunkt
 
 Der `config`-Server (Datei `configCmd/config.go`) enthält in der `main()`-Funktion einen `TODO`-Kommentar. Der `/endpoints/[identifier]`-Endpunkt soll neu auch die `DELETE`-Methode unterstützen, damit man per `curl -X DELETE` auch Endpoints aus der Konfiguration heraus löschen kann, die man nicht länger monitoren möchte.
 
-**Aufgabe 7**: Lesen Sie den Code der Funktion `postEndpoint` weiter unten in der Datei und versuchen Sie ihn zu verstehen. Einen Teil dieses Codes können Sie für die Implementierung der `DELETE`-Methode übernehmen.
+**Aufgabe Z1**: Lesen Sie den Code der Funktion `postEndpoint` weiter unten in der Datei und versuchen Sie ihn zu verstehen. Einen Teil dieses Codes können Sie für die Implementierung der `DELETE`-Methode übernehmen.
 
-**Aufgabe 8**: Ergänzen Sie nun das `switch`/`case`-Statement beim `TODO`-Kommentar um einen weiteren Fall (`http.MethodDelete`). Hier soll die Funktion `deleteEndpoint()` aufgerufen werden. Implementieren Sie diese Funktion und testen Sie diese mit `curl`. (Sie müssen den Server dabei nach jeder Änderung neu starten.)
+**Aufgabe Z2**: Ergänzen Sie nun das `switch`/`case`-Statement beim `TODO`-Kommentar um einen weiteren Fall (`http.MethodDelete`). Hier soll die Funktion `deleteEndpoint()` aufgerufen werden. Implementieren Sie diese Funktion und testen Sie diese mit `curl`. (Sie müssen den Server dabei nach jeder Änderung neu starten.)
+
+**Aufgabe Z3**: Erstellen Sie anschliessend einen Pull Request vom `meow`-Repository!
