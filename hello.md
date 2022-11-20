@@ -1,0 +1,1 @@
+This _is_ a **test** for ~~HTML~~ Markdown rendering using `curl`.
