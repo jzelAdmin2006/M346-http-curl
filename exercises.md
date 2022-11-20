@@ -2,9 +2,9 @@
 
 Mit den folgenden Übungen soll das Verständnis von HTTP und der Gebrauch von `curl` eingeübt werden.
 
-Dazu wird als erstes das Monitoring-Software `meow` in Betrieb genommen. Anschliessend werden verschiedene Endpoints mithilfe der `config`-Komponente via HTTP konfiguriert.
+Dazu werden zuerst zwei Komponenten des Monitoring-Systems `meow` in Betrieb genommen. Anschliessend werden verschiedene Endpoints mithilfe der `config`-Komponente via HTTP konfiguriert.
 
-Die `config`-Komponente wird zudem erweitert, sodass man auch Endpoints, die man nicht mehr monitoren möchte, löschen kann.
+Die `config`-Komponente wird optional (Zusatzaufgabe) erweitert, sodass man auch Endpoints, die man nicht mehr monitoren möchte, löschen kann.
 
 ## Repository forken und klonen
 
@@ -67,18 +67,18 @@ Sie können den `config`-Server nun folgendermassen starten:
 Der `config`-Server läuft nun (auf `localhost:8000`). Er unterstützt die folgenden Endpunkte:
 
 - `GET /endpoints`: gibt eine Liste sämtlicher konfigurierter Endpoints zurück
-- `GET /endpoints/{identifier}`: gibt einen Endpoint anhand seines Identifiers zurück
-- `POST /endpoints/{identifier}`: erstellt oder überschreibt einen Endpoint in der Konfiguration
+- `GET /endpoints/[identifier]`: gibt einen Endpoint anhand seines Identifiers zurück
+- `POST /endpoints/[identifier]`: erstellt oder überschreibt einen Endpoint in der Konfiguration
 
 **Aufgabe 4**: Machen Sie mit `curl` einen `GET`-Request auf `/endpoints`. Leiten Sie die Ausgabe nach `all-endpoints.json` um. Dokumentieren Sie Ihren Befehl in der Datei `get-endpoints.sh`. Fügen Sie beide Dateien diesem Git-Repository hinzu.
 
 **Aufgabe 5**: Machen Sie mit `curl` einen `GET`-Request auf einen spezifischen Endpoint anhand dessen Identifiers. Leiten Sie die Ausgabe nach `endpoint-[identifier].json` um, wobei Sie den Platzhalter `[identifier]` durch Ihren spezifischen Identifier ersetzen. Dokumentieren Sie Ihren Befehl in der Datei `get-endpoint-[identifier].sh`. Fügen Sie beide Dateien diesem Git-Repository hinzu.
 
-**Aufgabe 6**: Kopieren Sie die Datei `endpoint-[identifier].json` nach `new-endpoint.json`. Öffnen Sie nun `new-endpoint.json` in einem Texteditor. Ersetzen Sie alle Werte in dieser Datei durch diejenigen, die Sie vorher bei Aufgabe 3 als vierte Zeile ergänzt haben. Machen Sie nun mit `curl` eine `POST`-Anfrage [siehe Einführung](README.md#post-anfragen) an den `config`-Server. Dieser sollte den neuen Endpunkt nun in seine Datenbank (siehe `config.csv` im `meow`-Verzeichnis) aufgenommen haben. Dokumentieren Sie Ihren Befehl in der Datei `post-endpoint-[identifier].sh`. Fügen Sie diese Datei und `new-endpoint.json` diesem Git-Repository hinzu.
+**Aufgabe 6**: Kopieren Sie die Datei `endpoint-[identifier].json` nach `new-endpoint.json`. Öffnen Sie nun `new-endpoint.json` in einem Texteditor. Ersetzen Sie alle Werte in dieser Datei durch diejenigen, die Sie vorher bei Aufgabe 3 als vierte Zeile ergänzt haben. Machen Sie nun mit `curl` eine `POST`-Anfrage ([siehe Einführung](README.md#post-anfragen)) an den `config`-Server. Dieser sollte den neuen Endpunkt nun in seine Datenbank (siehe `config.csv` im `meow`-Verzeichnis) aufgenommen haben. Dokumentieren Sie Ihren Befehl in der Datei `post-endpoint-[identifier].sh`. Fügen Sie diese Datei und `new-endpoint.json` diesem Git-Repository hinzu.
 
 ## Zusatzaufgabe: Ergänzung des Config-Servers um `DELETE`-Endpunkt
 
-Der `config`-Server (Datei `configCmd/config.go`) enthält in der `main()`-Funktion einen `TODO`-Kommentar. Der `/endpoints/{identifier}`-Endpunkt soll neu auch die `DELETE`-Methode unterstützen, damit man per `curl -X DELETE` auch Endpoints aus der Konfiguration heraus löschen kann, die man nicht länger monitoren möchte.
+Der `config`-Server (Datei `configCmd/config.go`) enthält in der `main()`-Funktion einen `TODO`-Kommentar. Der `/endpoints/[identifier]`-Endpunkt soll neu auch die `DELETE`-Methode unterstützen, damit man per `curl -X DELETE` auch Endpoints aus der Konfiguration heraus löschen kann, die man nicht länger monitoren möchte.
 
 **Aufgabe 7**: Lesen Sie den Code der Funktion `postEndpoint` weiter unten in der Datei und versuchen Sie ihn zu verstehen. Einen Teil dieses Codes können Sie für die Implementierung der `DELETE`-Methode übernehmen.
 
